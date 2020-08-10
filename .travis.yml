@@ -6,6 +6,18 @@ env:
 
 before_deploy:
   - mkdir -p release
-  - "GOOS=linux  GOARCH=amd64 go build -o release/datahandler-v$VERSION-linux-amd64"
-  - "GOOS=darwin GOARCH=amd64 go build -o release/datahandler-v$VERSION-darwin-amd64"
-  - "GOOS=windows GOARCH=amd64 go build -o release/datahandler-v$VERSION-darwin-amd64"
+  - "GOOS=linux  GOARCH=amd64 go build -o release/datahandlercli-v$VERSION-linux-amd64"
+  - "GOOS=darwin GOARCH=amd64 go build -o release/datahandlercli-v$VERSION-darwin-amd64"
+  - "GOOS=windows GOARCH=amd64 go build -o release/datahandlercli-v$VERSION-windows-amd64"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "Pp9mcNstQgpNQNsjOZAKYzpaa/I93FqKUS5XObBSPHyAUhvoFlHuGWgzHjTWcQ1/CIrDPhEO1XdK2LcqAVCKiY5gaXNqi+eu3UCx5SfZ2Pcybtv1A+7j2ci/2z5UcZoNgD7HJEwUuml2Jl1CpXWW4oKRw/bLmNwR5fSruxmdITdP+FILiJ7Yp0vypQZfUC03Z20gaCA8bHoO80lGSIfX8npMEbXxtjKoNZINT3WWwrFOF17Cfae1xJkBKkJWiARHyala3+tpKgNh/FAdSJ3URbHDUJ8F9lQ2ZREgDdYiwJYvJJfqCOHCWz9AlgeqO0GDnDXQLzHCNDFOq8k5QVht+3Vt5k3Ld3CShCcspQM8tWqLLmBr+tpex1KIE4Gw926WVJ/TZzjG9hlKJptu+D5c1/q1p5Y5g5SOwNqroUwaqyhaEdQ9CQTfEHoKPi2R1iKPlrL8OP6sVx7srRTMTcerrY6zfKDFPKWTNwvLMMJZMZoAupV/z9ofuiVv6JlzK41tCk7z7qLXpjpl4K48C5RkHR7dzb8UcQobh9qvcVfLp08XV/NIZGQa+sj/z+plfNst4PlmCaSfHzLKtsElqWvUTcxWwNcXQjDmTwvewiFnEr4B3sPoORtVZX6QlIiRz0Yue7N5bsp5rCUHQHbYUnmaOLNPaScuJve/ThInNIlyzyg="
+  file:
+    - "release/datahandlercli-v$VERSION-linux-amd64"
+    - "release/datahandlercli-v$VERSION-darwin-amd64"
+    - "release/datahandlercli-v$VERSION-windows-amd64"
+  skip_cleanup: true
+  on:
+    tags: true
