@@ -18,7 +18,7 @@ package main
 import (
 	"log"
 
-	"github.com/ag-computational-bio/datahandlercli/cmd"
+	"github.com/MariusDieckmann/datahandlercli/cmd"
 )
 
 func main() {

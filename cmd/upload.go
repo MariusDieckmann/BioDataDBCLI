@@ -19,7 +19,7 @@ limitations under the License.
 import (
 	"log"
 
-	"github.com/ag-computational-bio/datahandlercli/upload"
+	"github.com/MariusDieckmann/datahandlercli/upload"
 	"github.com/spf13/cobra"
 )
 
